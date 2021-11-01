@@ -25,5 +25,20 @@ export const Line = {
     // 有加入chatbot的話要在權限列表一起顯示normal或是分開顯示aggressive
     bot_prompt: "normal"
 }
-// 傳送給line aouth的網址
-export const LineURL = "https://access.line.me/oauth2/v2.1/authorize?"
+// 將得到的code拿去post驗證
+export const postLine = {
+    // 授權的型態(目前官方只有這個)
+    grant_type: "authorization_code",
+    // 傳回來的驗證碼
+    code: "",
+    // 重新導向的網址(要去AppSetting的Callback URL設定)
+    resirect_uri: "http://localhost:4200/",
+    // 頻道ID
+    client_id: "1656581706",
+    // 頻道密鑰
+    client_secret: "7d2925249d520496049ee32ed7a25628"
+}
+// 傳送給line aouth取得驗證碼的網址
+export const LineURL = "https://access.line.me/oauth2/v2.1/authorize?";
+// 呼叫line API的網址
+export const LineAPI = "https://api.line.me/oauth2/v2.1/token";
