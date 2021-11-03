@@ -26,28 +26,30 @@ export class AppComponent implements OnInit {
     console.log(loginStatus);
     console.log(index);
     switch (index) {
-      case -1: return "Line Login Error !";
+      case -1:
+        return;
       default:
-        const header = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        const option = { headers: header };
+        const header = { headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded') };
         postLine.code = loginStatus[index].value;
-        // let data = this.forMateObj(postLine);
-        // const req = LineAPI;
-        let box = [], PostLine = Object.keys(postLine);
-        box = PostLine.map(item => `${item}=${postLine[item]}`);
-        const req = LineAPI + box.join("&");
-        console.log(req);
-        this.http.post(req, option).subscribe(
+        let data = this.forMateObj(postLine);
+
+        // let box = [], PostLine = Object.keys(postLine);
+        // box = PostLine.map(item => `${item}=${postLine[item]}`);
+        // const req = LineAPI + box.join("&");
+        console.log(data);
+        console.log(data.toString());
+        console.log(postLine);
+        this.http.post(LineAPI, data.toString(), header).subscribe(
           data => console.log(data),
           err => console.log(err),
-          () => console.log(`${req} is "Complete!"`)
+          () => console.log(`${LineAPI} is "Complete!"`)
         )
-        return "OK";
+        return;
     }
   }
   forMateObj(obj: any) {
-    let key = Object.keys(obj), data = new FormData();
-    key.forEach(item => data.append(item, obj[item]));
+    let key = Object.keys(obj), data = new URLSearchParams();
+    key.forEach(item => data.set(item, obj[item]));
     return data;
   }
   ngOnInit() {

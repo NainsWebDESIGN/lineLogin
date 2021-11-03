@@ -32,7 +32,7 @@ export const postLine = {
     // 傳回來的驗證碼
     code: "",
     // 重新導向的網址(要去AppSetting的Callback URL設定)
-    resirect_uri: "http://localhost:4200/",
+    redirect_uri: "http://localhost:4200/",
     // 頻道ID
     client_id: "1656581706",
     // 頻道密鑰
