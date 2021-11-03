@@ -58,3 +58,26 @@ export interface LineHref {
     // 呼叫line API的網址
     API: string
 }
+// id_token解析後的格式
+export interface JwtLineToken {
+    // 簽發者
+    iss: string,
+    // 代表方
+    sub: string,
+    // 接收者
+    aud: string,
+    // token過期時間
+    exp: string,
+    // token簽發時間
+    iat: string,
+    // 防止重複攻擊，再登入時給的參數nonce
+    nonce: string,
+    // 登入方式(pwd 帳號密碼登入, lineqr 用QR code登入, linesso 用以存在的帳密登入，意即曾登入過)
+    amr: string[],
+    // 帳號名稱
+    name: string,
+    // 大頭貼的網域位置
+    picture: string,
+    // 身分驗證時的時間
+    auth_time: string
+}
