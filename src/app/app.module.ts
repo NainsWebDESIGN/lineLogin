@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 // Service
-// import { xxx } from '@service';
+import { ApiService } from '@service';
 
 // Pipe
 // import { xxx } from '@pipe';
@@ -21,7 +21,7 @@ import { AppComponent } from './app.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
